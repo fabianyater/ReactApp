@@ -22,13 +22,12 @@
 }
 
 .comic-card-content {
-  background-color: #000000;
+  background-color: white;
   position: absolute;
-  color: #ffffff;
+  color: red;
   overflow: hidden;
   width: 218px;
   height: 0;
-  transition: .5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 .comic-card-container:hover .comic-card-content {

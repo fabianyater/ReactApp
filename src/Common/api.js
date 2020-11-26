@@ -21,5 +21,5 @@ export const Api = () => fetch(
         }))
     .then(resp => resp.json())
     .catch(err => {
-        console.log("Ocurrió un error");
+        err.json();
     });
