@@ -10,10 +10,11 @@ const ComicCard = ({ title, description, thumbnail }) => {
           <h3> {title} </h3>
         </div>
         <div className="card-description">
+          <p>{description}</p>
+        </div>
+        <div className="card-see-more">
           <p>
-            {description == null
-              ? "Sin descripción"
-              : description.slice(0, -80) + " ..."}
+            <a href="#">Ver más...</a>
           </p>
         </div>
       </div>

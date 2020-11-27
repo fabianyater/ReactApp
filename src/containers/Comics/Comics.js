@@ -14,8 +14,6 @@ const Comics = () => {
       });
   }, []);
 
-  console.log(comics);
-
   if (comics.length > 0) {
     return (
       <div>
@@ -25,7 +23,11 @@ const Comics = () => {
             <ComicCard
               key={id}
               title={title}
-              description={description}
+              description={
+                description == null
+                  ? "Sin descripción"
+                  : description.slice(0, 250) + " ..."
+              }
               thumbnail={
                 thumbnail ? `${thumbnail.path}.${thumbnail.extension}` : null
               }

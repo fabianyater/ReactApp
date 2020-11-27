@@ -1,6 +1,15 @@
 * {
+  color: red;
   padding: 0;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .comic-card-container {
@@ -24,7 +33,6 @@
 .comic-card-content {
   background-color: white;
   position: absolute;
-  color: red;
   overflow: hidden;
   width: 218px;
   height: 0;
@@ -38,10 +46,19 @@
 }
 
 .card-title {
-  padding: 10px;
+  font-size: 13px;
+  padding: 15px;
 }
 
 .card-description {
   font-size: small;
-  padding: 10px;
+  padding: 0 15px;
+}
+
+.card-see-more {
+  position: absolute;
+  text-align: right;
+  bottom: 15px;
+  right: 20px;
+  width: 100%;
 }
