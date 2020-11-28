@@ -1,5 +1,5 @@
 * {
-  color: red;
+  color: black;
   padding: 0;
   margin: 0;
 }
@@ -14,11 +14,12 @@ a:hover {
 
 .comic-card-container {
   border: 1px solid #e2dcdc;
+  margin: 20px 35px 20px 35px;
   display: inline-flex;
   position: relative;
   border-radius: 5px;
+  text-align: left;
   height: 310px;
-  margin: 15px;
   width: 218px;
 }
 
@@ -58,7 +59,59 @@ a:hover {
 .card-see-more {
   position: absolute;
   text-align: right;
-  bottom: 15px;
+  bottom: 0;
   right: 20px;
   width: 100%;
+}
+
+@media (max-width: 1050px) {
+  .comic-card-container{
+    width: 390px;
+    background: red;
+  }
+  .comic-card-container img{
+    width: 390px;
+  }
+  .comic-card-content{
+    width: 390px;
+  }
+}
+
+@media (max-width: 900px) {
+  .comic-card-container{
+    width: 280px;
+    background: red;
+  }
+  .comic-card-container img{
+    width: 280px;
+  }
+  .comic-card-content{
+    width: 280px;
+  }
+}
+
+@media (max-width: 700px) {
+  .comic-card-container{
+    width: 210px;
+    background: red;
+  }
+  .comic-card-container img{
+    width: 210px;
+  }
+  .comic-card-content{
+    width: 210px;
+  }
+}
+
+@media (max-width: 600px) {
+  .comic-card-container{
+    width: 160px;
+    background: red;
+  }
+  .comic-card-container img{
+    width: 160px;
+  }
+  .comic-card-content{
+    width: 160px;
+  }
 }

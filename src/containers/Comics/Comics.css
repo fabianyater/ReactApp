@@ -1,0 +1,51 @@
+.comics-container {
+  display: flex;
+}
+
+.comics {
+  background: #458c7c;
+  text-align: center;
+  overflow: overlay;
+  height: 580px;
+  margin-left: 20px;
+  width: 50%;
+}
+
+.comics-title{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.comics-details {
+  width: 50%;
+}
+
+.selected-comics div {
+  text-align: center;
+}
+
+.comics-form {
+  padding-left: 10%;
+  padding: 30px;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 0.5em;
+}
+
+.form-group label {
+  vertical-align: middle;
+    display: inline-block;
+    width: 7em;
+}
+
+.form-group input {
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0.5em 0.6em;
+  border-radius: 5px;
+  width: 70%;
+}
