@@ -7,18 +7,22 @@
   text-align: center;
   overflow: overlay;
   height: 580px;
-  margin-left: 20px;
+  margin: 20px;
   width: 50%;
 }
 
-.comics-title{
+.comics-title {
   display: flex;
   justify-content: space-around;
 }
 
-
 .comics-details {
   width: 50%;
+  margin: 20px;
+}
+
+.comics-details h1 {
+  text-align: center;
 }
 
 .selected-comics div {
@@ -37,8 +41,8 @@
 
 .form-group label {
   vertical-align: middle;
-    display: inline-block;
-    width: 7em;
+  display: inline-block;
+  width: 7em;
 }
 
 .form-group input {
@@ -48,4 +52,15 @@
   padding: 0.5em 0.6em;
   border-radius: 5px;
   width: 70%;
+}
+
+.bton {
+  background-color: #7561e2;
+  border-radius: 4px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  padding: 9px;
+  width: 90px;
 }
