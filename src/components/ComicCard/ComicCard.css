@@ -66,7 +66,6 @@ a:hover {
 @media (max-width: 1050px) {
   .comic-card-container{
     width: 390px;
-    background: red;
   }
   .comic-card-container img{
     width: 390px;
@@ -79,7 +78,6 @@ a:hover {
 @media (max-width: 900px) {
   .comic-card-container{
     width: 280px;
-    background: red;
   }
   .comic-card-container img{
     width: 280px;
@@ -92,7 +90,6 @@ a:hover {
 @media (max-width: 700px) {
   .comic-card-container{
     width: 210px;
-    background: red;
   }
   .comic-card-container img{
     width: 210px;
@@ -105,7 +102,6 @@ a:hover {
 @media (max-width: 600px) {
   .comic-card-container{
     width: 160px;
-    background: red;
   }
   .comic-card-container img{
     width: 160px;

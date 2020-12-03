@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ComicCard } from "../../components";
+import { Modal, Spin, Form, InputNumber, Button, Input } from "antd";
 import { Api } from "../../Common/api";
-import { Modal } from "antd";
+import * as validation from "./Validation";
 import "./Comics.css";
 
 const Comics = () => {
@@ -10,15 +11,20 @@ const Comics = () => {
   const [visible, setVisible] = useState(false);
   const [newComic, setNewComic] = useState([]);
 
-  const [inputs, setInputs] = useState({
-    id: "",
-    title: "",
-    description: "",
-    thumbnail: {
-      path: "",
-      extension: "",
-    },
-  });
+  const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 12 },
+  };
+
+  const onFinishFailed = (res) => {
+    console.log(res);
+  };
+
+  const onFinish = (values) => {
+    setNewComic([...newComic, { ...values }]);
+  };
+
+  console.log("algo " + onFinish);
 
   useEffect(() => {
     Api()
@@ -35,29 +41,6 @@ const Comics = () => {
   const handleOk = () => setVisible(false);
   const handleCancel = () => setVisible(false);
 
-  const onChange = (e) => {
-    if (e.target.name === "path" || e.target.name === "extension") {
-      setInputs({
-        ...inputs,
-        thumbnail: {
-          ...inputs.thumbnail,
-          [e.target.name]: e.target.value,
-        },
-      });
-    } else {
-      setInputs({
-        ...inputs,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
-  const save = () => {
-    setNewComic([...newComic, { ...inputs }]);
-  };
-
-  console.log(save);
-
   if (comics.length > 0) {
     return (
       <>
@@ -65,24 +48,9 @@ const Comics = () => {
           <div className="comics">
             <h1>COMICS</h1>
             {[...newComic, ...comics].map((comic) => {
-              const { id, title, description, thumbnail } = comic;
+              const { id } = comic;
               return (
-                <ComicCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  description={
-                    description == null
-                      ? "Sin descripción"
-                      : description.slice(0, 250) + " ..."
-                  }
-                  thumbnail={
-                    thumbnail
-                      ? `${thumbnail.path}.${thumbnail.extension}`
-                      : null
-                  }
-                  onSelect={handleSelected}
-                />
+                <ComicCard key={id} comic={comic} onSelect={handleSelected} />
               );
             })}
             <Modal
@@ -96,57 +64,71 @@ const Comics = () => {
                 alt="Marvel Comics"
                 height="190px"
                 width="150px"
-              ></img>
+              />
               <p>{selected.description}</p>
             </Modal>
           </div>
           <div className="comics-details">
-            <h1>COMICS SELECCIONADO</h1>
+            <h1>COMIC SELECCIONADO</h1>
             <div className="selected-comics">
-              <div>
-                <ComicCard
-                  title={selected.title}
-                  description={selected.description}
-                  thumbnail={selected.thumbnail}
-                />
-              </div>
+              <div>{selected && <ComicCard comic={selected} />}</div>
             </div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-              }}
+            <Form
+              {...layout}
+              name="new-comic"
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              validateMessages={validation.messages}
             >
-              <div className="comics-form">
-                <div className="form-group">
-                  <label>Id: </label>
-                  <input type="text" name="id" onChange={onChange} />
-                </div>
-                <div className="form-group">
-                  <label>Título: </label>
-                  <input type="text" name="title" onChange={onChange} />
-                </div>
-                <div className="form-group">
-                  <label>Descripción: </label>
-                  <input type="text" name="description" onChange={onChange} />
-                </div>
-                <div className="form-group">
-                  <label>Path: </label>
-                  <input type="text" name="path" onChange={onChange} />
-                </div>
-                <div className="form-group">
-                  <label>Extension: </label>
-                  <input type="text" name="extension" onChange={onChange} />
-                </div>
-                <button className="bton" onClick={save}></button>
-              </div>
-            </form>
+              <Form.Item name="id" label="Id" rules={validation.schema.id}>
+                <InputNumber />
+              </Form.Item>
+              <Form.Item
+                name="title"
+                label="Título"
+                rules={validation.schema.title}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="description"
+                label="Descripción"
+                rules={validation.schema.description}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name={["thumbanail", "path"]}
+                label="Path"
+                rules={validation.schema.path}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name={["thumbanail", "extension"]}
+                label="Extensión"
+                rules={validation.schema.extension}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                <Button type="primary" htmlType="submit">
+                  Enviar
+                </Button>
+              </Form.Item>
+            </Form>
           </div>
         </div>
       </>
     );
   }
-
-  return <div Hola />;
+  return (
+    <div className="loading-container">
+      <div>
+        <Spin size="large" />
+      </div>
+    </div>
+  );
 };
 
 export default Comics;
