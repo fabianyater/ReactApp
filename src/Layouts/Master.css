@@ -1,0 +1,38 @@
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  /* height: 32px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 16px; */
+  background: red;
+  cursor: pointer;
+  height: 65px;
+}
+
+.logo img {
+  height: 65px;
+  width: 100%;
+}
+
+.ant-layout-content {
+  overflow: overlay;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.btn-master {
+  text-align: left;
+  width: 100%;
+}

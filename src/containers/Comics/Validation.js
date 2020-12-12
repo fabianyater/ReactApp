@@ -1,8 +1,6 @@
 export const schema = {
   id: [{
     required: true,
-    /*     type: "regexp",
-     */
     pattern: new RegExp(/^([0-9])*$/),
     message: 'Solo números'
   }],

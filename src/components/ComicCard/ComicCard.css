@@ -41,7 +41,6 @@ a:hover {
 .comic-card-container:hover .comic-card-content {
   box-shadow: 1px 5px 10px #888888;
   border-radius: 5px;
-  cursor: pointer;
   height: 100%;
 }
 
