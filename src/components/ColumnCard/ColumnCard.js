@@ -5,14 +5,14 @@ import './ColumnCard.css'
 
 const { Header, Content } = Layout
 
-const ManageCard = ({ title = 'Title', comics = [], onSelect, state }) => {
+const ManageCard = ({ title = 'Title', comics = [], onSelect }) => {
 
   return (
     <>
       <Layout className="column-card-container">
         <Header className="header-column">{title}</Header>
         <Content>
-          {comics.map(comic => <ComicCard comic={comic} key={comic.id} onSelect={onSelect} allowClick='true'/>)}
+          {comics.map(comic => <ComicCard comic={comic} key={comic.id} onSelect={onSelect} />)}
         </Content>
       </Layout>
     </>

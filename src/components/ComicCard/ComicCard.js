@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Row } from "antd";
 import React from "react";
 import "./ComicCard.css";
 
@@ -12,17 +12,17 @@ const ComicCard = ({ comic, onSelect, state = 'NEW', allowClick = false }) => {
 
   let message = 'A revisar'
   let buttonType = 'primary'
-  switch (state) {
+  switch (comic.state) {
     case 'NEW':
-      buttonType = 'primary'
+      buttonType = 'danger'
       message = 'Pasar a revisión'
       break
     case 'REVIEW':
-      buttonType = 'text'
+      buttonType = 'primary'
       message = 'APROBAR'
       break
     case 'APPROVED':
-      buttonType = 'text'
+      buttonType = 'second'
       message = 'Completado'
       break
     default:
@@ -50,13 +50,15 @@ const ComicCard = ({ comic, onSelect, state = 'NEW', allowClick = false }) => {
           <p>
             {description == null
               ? "Sin descripción"
-              : description.slice(0, 250) + "..."}
+              : description.slice(0, 150) + "..."}
           </p>
         </div>
         <div className="card-see-more">
           <p>
-            {allowClick && (
-              <Button type={buttonType} onClick={onClick} >{message}</Button>
+            {onSelect && (
+              <Row style={{ justifyContent: "center" }}>
+                <Button type={buttonType} onClick={onClick} >{message}</Button>
+              </Row>
             )}
           </p>
         </div>

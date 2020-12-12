@@ -56,7 +56,11 @@ const ManageComics = () => {
         })
         return comic
       case 'APPROVED':
-        comic.allowClick = true
+        setComics({
+          ...comics,
+          approvedComics: comics.approvedComics.filter(i => i.id !== comic.id),
+          newComics: [...comics.newComics, comic]
+        })
         return comic
       default:
         comic.state = ''
@@ -95,7 +99,7 @@ const ManageComics = () => {
           <Form
             {...layout}
             name='new-comic'
-            onFinish={onFinish}
+            onFinish={handleSelect}
             onFinishFailed={onFinishFailed}
             validateMessages={validation.messages}
           >
@@ -134,7 +138,7 @@ const ManageComics = () => {
         </Modal>
         <ColumnCard comics={assignState(comics.newComics, 'NEW')} onSelect={handleSelect} title="Nuevos comics" />
         <ColumnCard comics={assignState(comics.reviewCommics, 'REVIEW')} onSelect={handleSelect} title="En revisión" />
-        <ColumnCard comics={assignState(comics.approvedComics, 'APPROVED')} onSelect={handleSelect} title="Aprovados" />
+        <ColumnCard comics={assignState(comics.approvedComics, 'APPROVED')} title="Aprovados" />
       </div>
     </>
 
