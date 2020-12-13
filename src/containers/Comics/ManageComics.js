@@ -99,7 +99,7 @@ const ManageComics = () => {
           <Form
             {...layout}
             name='new-comic'
-            onFinish={handleSelect}
+            onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             validateMessages={validation.messages}
           >

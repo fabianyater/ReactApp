@@ -10,7 +10,7 @@ const ManageCard = ({ title = 'Title', comics = [], onSelect }) => {
   return (
     <>
       <Layout className="column-card-container">
-        <Header className="header-column">{title}</Header>
+        <Header className="header-column"><h1>{title}</h1></Header>
         <Content>
           {comics.map(comic => <ComicCard comic={comic} key={comic.id} onSelect={onSelect} />)}
         </Content>

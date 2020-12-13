@@ -24,10 +24,6 @@
   width: 100%;
 }
 
-.ant-layout-content {
-  overflow: overlay;
-}
-
 .site-layout .site-layout-background {
   background: #fff;
 }
