@@ -31,7 +31,7 @@ const ManageComics = () => {
 
   const onFinish = values => {
     console.log('valores: ', values)
-    setComics([comics.newComics, { ...values }]);
+    setComics([{ ...values }, comics.newComics]);
   };
 
   const handleOk = () => setVisible(false);
@@ -82,7 +82,6 @@ const ManageComics = () => {
       </Row>
     </>
   )
-  console.log('Comics: ', comics)
   return (
     <>
       <div style={{ textAlign: "center" }}>
@@ -138,7 +137,7 @@ const ManageComics = () => {
         </Modal>
         <ColumnCard comics={assignState(comics.newComics, 'NEW')} onSelect={handleSelect} title="Nuevos comics" />
         <ColumnCard comics={assignState(comics.reviewCommics, 'REVIEW')} onSelect={handleSelect} title="En revisión" />
-        <ColumnCard comics={assignState(comics.approvedComics, 'APPROVED')} title="Aprovados" />
+        <ColumnCard comics={assignState(comics.approvedComics, 'APPROVED')} title="Aprobados" />
       </div>
     </>
 

@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { ComicCard } from "../../components";
 import { Spin } from "antd";
-import { Api } from "../../Common/api";
 import "./Comics.css";
-
+import * as ComicTypes from '../../services/comics/comicTypes'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 const Comics = () => {
-  const [comics, setComics] = useState([]);
+  const [comicss, setComics] = useState([]);
   const [selected, setSelected] = useState({});
 
+  const { comics, loading } = useSelector(state => state.comics)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    Api()
-      .then((res) => setComics(res.data.results))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
+    dispatch({
+      type: ComicTypes.GET_COMICS
+    })
+  }, []);
   /*  const handleSelected = (comic) => {
      setSelected(comic);
      setVisible(true);
    }; */
 
-  if (comics.length > 0) {
+   console.log(comics)
+
     return (
       <>
         <div className="comics-container">
+          {loading && <Spin size="large" />}
           <div className="comics">
             <h1>COMICS</h1>
             {[...comics].map((comic) => {
@@ -44,14 +46,7 @@ const Comics = () => {
         </div>
       </>
     );
-  }
-  return (
-    <div className="loading-container">
-      <div>
-        <Spin size="large" />
-      </div>
-    </div>
-  );
+ 
 };
 
 export default Comics;
