@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import ComicsReducer from '../services/comics/comicsReducer'
+import { ComicReducer } from '../services/comics/comicSlice'
 
 export default combineReducers({
-  comics: ComicsReducer,
+  comics: ComicReducer,
 })

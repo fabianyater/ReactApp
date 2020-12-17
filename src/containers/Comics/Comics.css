@@ -3,12 +3,9 @@
 }
 
 .comics {
-  /* background: #458c7c; */
   text-align: center;
   overflow: overlay;
   height: 580px;
-  /* margin: 20px; */
-  /* width: 90%; */
 }
 
 .comics::-webkit-scrollbar {
@@ -35,14 +32,9 @@
 }
 
 .comics::-webkit-scrollbar-track {
-  /* background: #e1e1e1;
-  border-radius: 4px; */
   display: none;
 }
 
-/* .comics::-webkit-scrollbar-track:hover .comics::-webkit-scrollbar-track:active {
-  background: #d4d4d4;
-} */
 
 .comics-title {
   justify-content: space-around;
@@ -51,7 +43,6 @@
 
 .comics-details {
   width: 50%;
-  /* margin: 20px; */
 }
 
 .comics-details h1 {
@@ -61,13 +52,6 @@
 .selected-comics div {
   text-align: center;
 }
-
-/* .comics-form {
-  padding-left: 10%;
-  padding: 30px;
-  margin: 0;
-} */
-
 .form-group {
   margin-bottom: 0.3em;
 }
@@ -104,6 +88,4 @@
   display: flex;
   height: 650px;
   width: 100%;
-  /* margin: 10% 0 0 25%; */
-  /* background: red; */
 }

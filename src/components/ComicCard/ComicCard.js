@@ -42,7 +42,7 @@ const ComicCard = ({ comic, onSelect, state = 'NEW', allowClick = false }) => {
         }
         alt="Marvel Comics"
       />
-      <div className="comic-card-content">
+      <div className="comic-card-content" onClick={onClick}>
         <div className="card-title">
           <h3> {title} </h3>
         </div>
@@ -57,7 +57,7 @@ const ComicCard = ({ comic, onSelect, state = 'NEW', allowClick = false }) => {
           <p>
             {onSelect && (
               <Row style={{ justifyContent: "center" }}>
-                <Button type={buttonType} onClick={onClick} >{message}</Button>
+                <Button type={buttonType} >{message}</Button>
               </Row>
             )}
           </p>

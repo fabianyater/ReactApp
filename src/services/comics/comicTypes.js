@@ -1,4 +1,0 @@
-export const GET_COMICS = 'GET_COMICS'
-export const GET_COMICS_BY_ID = 'GET_COMICS_BY_ID'
-export const GET_COMICS_SUCCESS = 'GET_COMICS_SUCCESS'
-export const GET_COMICS_FAIL = 'GET_COMICS_FAIL'
