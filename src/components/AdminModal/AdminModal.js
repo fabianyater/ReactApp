@@ -21,9 +21,9 @@ export const AdminModal = ({ comic, visible, setVisible, title }) => {
     if (comic) {
       const reviewComics = comics.reviewComics.map(c => (c.id === comic.id ? values : c))
       dispatch(comicActions.setComics({ ...comics, reviewComics }))
+      message.success('¡Comic actualizado! ✔')
     } else {
       dispatch(comicActions.addComic({ values, hide }))
-      message.success('¡Comic agregado correctamente! ✔')
     }
     setVisible(false)
   }
@@ -34,7 +34,7 @@ export const AdminModal = ({ comic, visible, setVisible, title }) => {
   }
 
   const footerModal = [
-    <Button danger key="back" htmlType="submit" form="comic"> Cancelar </Button>,
+    <Button danger key="back" onClick={() => setVisible(false)} form="comic"> Cancelar </Button>,
     <Button key="save" type="primary" htmlType="submit" form="comic"> Guardar </Button>
   ]
 
@@ -67,7 +67,7 @@ export const AdminModal = ({ comic, visible, setVisible, title }) => {
         </Form.Item>
         <Form.Item
           name={"imageUrl"}
-          label="Path"
+          label="Ruta imagen"
           rules={validation.schema.imageUrl}
         >
           <Input />

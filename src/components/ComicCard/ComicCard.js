@@ -11,7 +11,7 @@ const ComicCard = ({ comic }) => {
 
   const [modalVisible, setModalVisible] = useState(false)
 
-  const { id, title, description, thumbnail, state } = comic;
+  const { id, title, description, imageUrl, state } = comic;
 
   const { comics } = useSelector(state => state.comics)
 
@@ -78,12 +78,9 @@ const ComicCard = ({ comic }) => {
     }
   };
 
-
-  const image = `${thumbnail?.path}.${thumbnail?.extension}`;
-
   return (
     <div className="comic-card-container">
-      <img src={image || "https://e.rpp-noticias.io/xlarge/2020/04/26/182718_933313.jpg"} alt="Marvel Comics" />
+      <img src={imageUrl || "https://bitsofco.de/content/images/2018/12/broken-1.png"} alt="Marvel Comics" />
       <div className="comic-card-content">
         <div className="card-title">
           <h3> {title} </h3>

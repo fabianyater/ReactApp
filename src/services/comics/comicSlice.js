@@ -26,8 +26,8 @@ const ComicSlice = createSlice(
       getSelecetedComic(state, { payload }) {
         state.selected = payload
       },
-      addComic(state, { payload }) {
-        state.comics = [payload, ...state.comics]
+      addComic(state) {
+        state.loading = true
       }
     }
   }

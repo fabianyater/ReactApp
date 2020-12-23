@@ -1,7 +1,7 @@
 export const schema = {
-  title: [{ required: true }],
-  description: [{ required: true, min: 10, max: 190 }],
-  path: [{ required: true, }],
+  title: [{ min: 10 }],
+  description: [{ min: 10, max: 190 }],
+  imageUrl: [{ min: 10 }],
 }
 
 export const messages = {
