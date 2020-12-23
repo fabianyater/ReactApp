@@ -1,12 +1,7 @@
 export const schema = {
-  id: [{
-    required: true,
-    pattern: new RegExp(/^([0-9])*$/),
-    message: 'Solo números'
-  }],
-  description: [{ required: true, min: 3, max: 50 }],
+  title: [{ required: true }],
+  description: [{ required: true, min: 10, max: 190 }],
   path: [{ required: true, }],
-  extension: [{ required: true }]
 }
 
 export const messages = {

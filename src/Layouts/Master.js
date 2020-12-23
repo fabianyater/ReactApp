@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout, Menu, Button } from 'antd'
 import {
   HomeOutlined,
@@ -9,6 +9,8 @@ import {
 } from '@ant-design/icons';
 import "./Master.css"
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { comicActions } from '../services/comics/comicSlice';
 
 const { Header, Sider, Content, Footer } = Layout
 
@@ -17,12 +19,18 @@ const Master = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
   let history = useHistory();
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(comicActions.getComics());
+  }, []);
+
   const toggle = () => setCollapsed(!collapsed)
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider trigger={null} collapsible collapsed={collapsed} theme='light'>
-        <div className="logo" onClick={()=>history.push('/')}>
+        <div className="logo" onClick={() => history.push('/')}>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/MarvelLogo.svg/250px-MarvelLogo.svg.png"
             alt="Marvel Comics"

@@ -3,18 +3,18 @@ import { comicActions } from './comicSlice'
 import { Api } from '../../Common/api'
 
 const fetchComics = async () => await Api()
-  .then(res => res.json())
-  .catch(err => {
-    console.log("-------->", err)
-    return err
-  })
 
 function* getComics() {
 
   const response = yield fetchComics();
 
   if (response) {
-    yield put(comicActions.getComicsSuccess(response.data.results));
+    const data = {
+      newComics: response.data.results,
+      reviewComics: [],
+      approvedComics: []
+    }
+    yield put(comicActions.setComics(data))
   } else {
     yield put(comicActions.getComicsError(
       {
