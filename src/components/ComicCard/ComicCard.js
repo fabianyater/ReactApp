@@ -35,11 +35,13 @@ const ComicCard = ({ comic }) => {
       break
   }
 
-  const deletComic = () => {
+  const deleteComic = () => {
+    const id = comic.id
     dispatch(comicActions.setComics({
       ...comics,
       reviewComics: comics.reviewComics.filter(i => i.id !== comic.id)
     }))
+    dispatch(comicActions.deleteComic({ id }))
   }
 
   const onClick = () => {
@@ -92,7 +94,7 @@ const ComicCard = ({ comic }) => {
           {state == 'REVIEW' && (
             <>
               <Button type={buttonType} onClick={() => setModalVisible(true)} icon={<EditOutlined />}>Editar</Button>
-              <Button type={buttonType} danger onClick={() => deletComic()} icon={<DeleteOutlined />}>Eliminar</Button>
+              <Button type={buttonType} danger onClick={() => deleteComic()} icon={<DeleteOutlined />}>Eliminar</Button>
             </>
           )}
         </div>

@@ -17,11 +17,12 @@ export const AdminModal = ({ comic, visible, setVisible, title }) => {
     form.setFieldsValue(comic)
   }, [])
 
-  const onFinish = (values) => {
+  const onFinish = (values, id) => {
+    id = comic.id
     if (comic) {
       const reviewComics = comics.reviewComics.map(c => (c.id === comic.id ? values : c))
       dispatch(comicActions.setComics({ ...comics, reviewComics }))
-      message.success('¡Comic actualizado! ✔')
+      dispatch(comicActions.editComic({ values, id }))
     } else {
       dispatch(comicActions.addComic({ values, hide }))
     }

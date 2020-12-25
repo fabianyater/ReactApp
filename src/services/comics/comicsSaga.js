@@ -40,9 +40,39 @@ function* addComics({ payload }) {
   }
 }
 
+function* editComics({ payload }) {
+
+  const { values, id } = payload
+
+  console.log("Id para editar: ", id)
+
+  const response = yield Api.put(`/comics/${id}`, values);
+
+  if (response.ok) {
+    message.success('¡Comic actualizado! ✔')
+  } else {
+    yield put(comicActions.getComicsError({ codigo: "", message: response.payload.message }))
+    message.warning("¡Hubo un error! ❌" + response.payload.message)
+  }
+}
+
+function* deleteComics({ payload }) {
+
+  const response = yield Api.delete(`/comics/${payload.id}`);
+
+  if (response.ok) {
+    message.warning("¡Comic eliminado! ❗ ")
+  } else {
+    yield put(comicActions.getComicsError({ codigo: "", message: response.payload.message }))
+    message.error("¡Hubo un error! ❌" + response.payload.message)
+  }
+}
+
 function* actionWatcher() {
   yield takeLatest(comicActions.getComics, getComics)
   yield takeLatest(comicActions.addComic, addComics)
+  yield takeLatest(comicActions.editComic, editComics)
+  yield takeLatest(comicActions.deleteComic, deleteComics)
 }
 
 export default function* comicsSaga() {

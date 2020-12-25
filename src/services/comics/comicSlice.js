@@ -28,6 +28,12 @@ const ComicSlice = createSlice(
       },
       addComic(state) {
         state.loading = true
+      },
+      deleteComic(state){
+        state.loading = true
+      },
+      editComic(state){
+        state.loading = true
       }
     }
   }
