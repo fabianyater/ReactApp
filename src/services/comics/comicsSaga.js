@@ -44,8 +44,6 @@ function* editComics({ payload }) {
 
   const { values, id } = payload
 
-  console.log("Id para editar: ", id)
-
   const response = yield Api.put(`/comics/${id}`, values);
 
   if (response.ok) {

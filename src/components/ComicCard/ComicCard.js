@@ -36,7 +36,7 @@ const ComicCard = ({ comic }) => {
   }
 
   const deleteComic = () => {
-    const id = comic.id
+    let id = comic.id
     dispatch(comicActions.setComics({
       ...comics,
       reviewComics: comics.reviewComics.filter(i => i.id !== comic.id)
